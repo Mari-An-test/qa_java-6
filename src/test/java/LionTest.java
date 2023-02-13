@@ -5,6 +5,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.mockito.Mock;
+import org.mockito.Mockito;
+
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class LionTest {
@@ -31,16 +36,10 @@ public class LionTest {
         boolean actualHasMane = lion.doesHaveMane();
         Assert.assertEquals(expectedHasMane, actualHasMane);
     }
-
     @Test
-    public void doesHaveManeMaleReturnsTrue() throws Exception {
-        Lion lion = new Lion("Самец", feline);
-        Assert.assertTrue("Самец doesHaveMane() должен вернуть true", lion.doesHaveMane());
-    }
-
-    @Test
-    public void doesHaveManeFemaleReturnsFalse() throws Exception {
-        Lion lion = new Lion("Самка", feline);
-        Assert.assertFalse("Самка doesHaveMane() должен вернуть false", lion.doesHaveMane());
+    public void testGetFoodReturnListEatOfMeat() throws Exception {
+        Lion lion = new Lion("Самка",feline);
+        Mockito.when(feline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
+        assertEquals(List.of("Животные", "Птицы", "Рыба"), lion.getFood());
     }
 }
