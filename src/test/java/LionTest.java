@@ -32,13 +32,13 @@ public class LionTest {
     }
     @Test
     public void doesHaveManeReturnCorrectValue() throws Exception {
-        Lion lion = new Lion(sex, new Feline());
+        Lion lion = new Lion(sex, feline);
         boolean actualHasMane = lion.doesHaveMane();
         Assert.assertEquals(expectedHasMane, actualHasMane);
     }
     @Test
     public void testGetFoodReturnListEatOfMeat() throws Exception {
-        Lion lion = new Lion("Самка",feline);
+        Lion lion = new Lion(sex, feline);
         Mockito.when(feline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         assertEquals(List.of("Животные", "Птицы", "Рыба"), lion.getFood());
     }
